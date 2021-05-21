@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Modal teste</title>
+</head>
+
+
+    <style>
+
+        .termo-uso .bs-form__field[type=checkbox]:checked {
+            background-size: 10px;
+        }
+
+        .termo-uso a {
+            color: #0056b3;
+        }
+
+        .termo-uso .termo-uso--modal__header p {
+            margin-bottom: 12px;
+        }
+
+        .termo-uso {
+            color: #58595B;
+            background-color: rgba(255, 255, 255, 0.6);
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            z-index: 1080;
+            backdrop-filter: blur(9px);
+            -webkit-backdrop-filter: blur(9px);
+        }
+
+        .termo-uso--modal {
+            background-color: #ffffff;
+            width: 75%;
+            border-radius: 6px;
+            padding: 45px 30px;
+            -webkit-box-shadow: 3px 4px 33px -3px #58595B;
+            -moz-box-shadow: 3px 4px 33px -3px #58595B;
+            box-shadow: 3px 4px 33px -3px #58595B;
+        }
+
+        .termo-uso--modal__conteudo {
+            margin-top: 20px;
+            padding: 10px 30px;
+            border: solid 1px #ccc;
+            border-radius: 5px;
+            max-height: 250px;
+            overflow-y: scroll;
+        }
+
+        .termo-uso--modal__conteudo p {
+            margin-top: 10px;
+        }
+
+        .termo-uso--modal__footer {
+            margin-top: 15px;
+        }
+
+        .termo-uso--modal__footer p {
+            margin-top: 12px;
+        }
+
+        .termo-uso--modal__footer .botoes {
+            margin-top: 35px;
+            text-align: right;
+
+        }
+
+        .termo-uso--modal__footer .botoes .btn {
+            width: 200px;
+            height: 40px;
+            border-radius: 33px;
+        }
+
+        .btn-recusar {
+            border: 1px solid blue;
+            color: blue;
+            margin-right: 20px;
+        }
+
+        .btn-aceitar {
+            border: 1px solid blue;
+            background-color: #5b5be8;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .termo-uso ::-webkit-scrollbar-thumb {
+            background: black;
+            background: #888888 0% 0% no-repeat padding-box;
+            border-radius: 6px;
+            opacity: 1;
+        }
+
+        .termo-uso ::-webkit-scrollbar {
+            background: #EEEEEE;
+            width: 6px;
+        }
+
+        @media (max-width: 650px) {
+            .termo-uso .botoes {
+                text-align: center;
+            }
+
+            .termo-uso .botoes .btn-recusar {
+                margin-right: 0px;
+                margin-bottom: 20px;
+            }
+        }
+
+        .termo-uso .botoes .btn:disabled {
+            cursor: not-allowed;
+        }
+
+        .termo-uso .bs-form-error__message {
+            display: none;
+        }
+
+        .termo-uso label.bs-form__label-text.has-error .bs-form__field {
+            border-color: #cc092f;
+        }
+
+        .termo-uso label.bs-form__label-text.has-error .bs-form-error__message {
+            display: block;
+        }
+    </style>
+	
+	<script>
+        function aceitarTermo(idDivTermo, versao, idAssociacaoTermo) {
+            const divTermo = document.getElementById(idDivTermo);
+            if(divTermo.querySelector('.input-li-de-acordo').checked) {
+                divTermo.querySelector('label.bs-form__label-text').classList.remove('has-error');
+                $.ajax('aceitarTermo.do', {
+                    type: 'POST',
+                    data: 'versao=' + versao +'&idAssociacaoTermo=' + idAssociacaoTermo,
+                    success: function () {
+                        if(divTermo.id === 'termo-uso') {
+                            document.getElementById('termo-uso').style.display = 'flex';
+                        }
+                        divTermo.remove();
+                    }
+                });
+            } else {
+                divTermo.querySelector('label.bs-form__label-text').classList.add('has-error');
+            }
+        }
+
+        function recusarTermo() {
+            var url = "logout.do?";
+            var mensagemErro = "";
+
+            ajaxJson(url, function (response) {
+                if (response) {
+                    if (response.erro) {
+                        mensagemErro = response.erro;
+                    }
+                }
+            }, mensagemErro);
+
+            window.location.href = '/seguro/homeSaudeSegurado.do';
+        }
+    </script>
+
+
+<body>
+	<%
+	response.write("My first ASP script!")
+	%>
+		<div class="termo-uso" id="termo-uso">
+        <div class="col-xs-10 col-sm-10 col-md-9 col-lg-8 termo-uso--modal termo-uso--modal">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="termo-uso--modal__header">
+                        <p><strong>Cuidamos dos seus dados e nos importamos com sua privacidade.</strong></p>
+                        <p>Para isso, antes de prosseguir é necessário aceitar o <strong>Termo de Uso</strong> do site:
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="termo-uso--modal__conteudo">
+                        <!-- <c:out value="${termoVO.descricao}" escapeXml="false"/>-->
+                    </div>
+                </div>
+            </div>
+            <div class="termo-uso--modal__footer">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p>Consulte a nossa <a
+                                href="https://www.bradescoseguranca.com.br/html/seguranca_corporativa/pf/seguranca-informacao/privacidade.shtm"
+                                target="_blank"><strong>Diretiva de Privacidade</strong></a> e o <a
+                                href="/FONTEJAVA/gerenciadorportal_v2/LGPD/Aviso de Privacidade - Portal Bradesco Saude Concierge - 30.09.pdf"
+                                target="_blank"><strong>Aviso de Privacidade</strong></a> para mais informações.</p>
+                        <p>
+                            <label style="line-height: 20px" for="input-li-de-acordo-termo-uso"
+                                   class="bs-form__label-text">
+                                <input id="input-li-de-acordo-termo-uso"
+                                       class="bs-form__field input-li-de-acordo"
+                                       type="checkbox"/>
+                                <strong style="vertical-align: top">Li e estou de acordo com o Termo de Uso.</strong>
+                                <span class="bs-form-error__message">Leia e aceite o Termo de Uso para prosseguir</span>
+                            </label>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="botoes">
+                            <button class="btn btn-aceitar" onclick="aceitarTermo('termo-uso', ${termoVO.versao}, ${termoVO.idAssociacaoTermo})">Aceitar</button>
+                            <button class="btn btn-recusar" onclick="recusarTermo()">Recusar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</body>
+</html>
