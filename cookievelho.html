@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="robots" content="noindex" />
+    <title>Cookie antigo</title>
+	<link rel="stylesheet" href="/erro/erro.css" type="text/css" />
+</head>
+<body>
+<script type="index.js"></script>
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="path-para-seu-script"></script>
+
+<style type="text/css">
+    
+
+.cookies__description {
+    color: #ffffff;
+    letter-spacing: 0.025rem;
+    font-weight: 100;
+    max-width: 72.875rem;
+    padding-right: 0;
+    padding-left: 0;
+}
+.cookies__content {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 0.9375rem;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+
+body {
+    color: #1f1f1f;
+    background: #CECECE url(/assets/pf/img/bg-seguraca.jpg) no-repeat;
+    background-attachment: fixed;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+
+.cookies {
+    position: fixed;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: #333;
+    bottom: 0;
+    z-index: 1075;
+    transition: all .3s ease-in-out;
+    font-family: 'open sans';
+}
+
+
+.cookies__content { 
+	-ms-flex-direction: row; 
+	flex-direction: row;
+	-ms-flex-pack: center;
+	justify-content: center; 
+	 }
+
+.cookies__description { 
+	color: #ffffff;
+	letter-spacing: 0.025rem;
+	font-weight: 100;
+	max-width: 72.875rem;
+	padding-right: 0;
+	padding-left: 0;
+	}
+
+.cookies__description p {
+	margin: 1.25rem 0;
+	color: #ffffff;
+	}
+
+.cookies__description strong { 
+	color: #ffffff; 
+}
+
+.cookies__description a {
+ text-decoration: none;
+ color: #ffffff;
+ }
+
+@media (min-width: 48rem) { .cookies__description { padding: 0 0.9375rem; } }
+
+@media (min-width: 48rem) { .cookies__cta { padding: 0 0.9375rem; } }
+
+.c-btn { display: -ms-inline-flexbox;
+	display: inline-flex;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding: 0.625rem 5.1875rem;
+	background-color: #0943e6;
+	color: #ffffff;
+	text-decoration: none;
+	text-transform: none;
+	font-weight: 700;
+	cursor: pointer;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	}
+
+.c-btnexcluido { excluidos
+    border-radius: 1.9375rem;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 0px !important;
+    border-color: black;
+}
+
+</style>
+<script>
+    
+    // Função para gravar cookie
+    function aceitarCookie() {
+        var urlAddCookie = window.location.origin + "caminho.asp";
+
+        // Definição do Cookie - chave , valor e data de expiração
+        Cookie cookie = new Cookie("lgpd", "true");
+        cookie.setMaxAge(60 * 60 * 24 * 365);
+        cookie.setSecure(true);
+    }
+  
+
+</script>
+
+    <table border="0">
+          <td style="padding:25px;">
+            <div id="Cookies" class="cookies"style="width: 1200px;margin-left: 50px;">
+            <div class="cookies__content">
+                <div class=" cookies__description">
+			        <p>
+
+                        Usamos cookies pra oferecer a melhor experiência e analisar o uso de nosso site, direcionar conteúdos e anúncios personalizados e facilitar a navegação de forma segura. Para mais informações, consulte nossa 
+			            <a href="https://www.teste.com" target="_blank" title="A proteção à privacidade e aos dados dos usuários refletem os valores da Organização X e reafirmam o seu compromisso com a melhoria contínua da eficácia do processo de proteção de dados" onclick="X('X Segurança','Aviso Cookies','Botão - Diretiva de privacidade');">
+			               <strong> Diretiva de Privacidade </strong>
+			             </a>
+			           </p>
+			      </div>
+                  <div class="cookies__cta">
+                        <a role="button" title="Fechar" class="c-btn"
+                        onclick="aceitarCookie()" style="width: 20px; padding-left: 50px;padding-right: 50px;"> Aceitar </a>
+                  </div>
+                  	<span onclick="fecharCookie()" class="cookies__closed js-fechar" title="Fechar" style="color: white;">x</span>
+                </div>
+            </div>
+            </td>
+	</table>
+</body>        
+    
+</html>
